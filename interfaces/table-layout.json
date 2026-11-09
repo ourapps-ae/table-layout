@@ -1,0 +1,29 @@
+{
+  "id": "table-layout",
+  "type": "ae/table-layout",
+  "version": "1.0.0",
+  "description": "Seats around an oval table on every screen size (portrait, landscape, television) as a pure function of the seat count and the area, plus views that place seats from it.",
+  "operations": {
+    "tableLayout": { "arguments": ["options:{seats:number,orientation:'portrait'|'landscape'|'tv',width?:number,height?:number,turn?:number}"], "returns": "TableLayout{orientation,seats,width,height,seatSpots:SeatSpot[],oval,plate,pot,deck,burn,board:Point[5],cardWidth,middleAngle}" },
+    "screenClass": { "arguments": ["width:number", "height:number", "tv?:boolean"], "returns": "'portrait'|'landscape'|'tv'" },
+    "relativeSeat": { "arguments": ["seat:number", "mySeat:number", "count:number"], "returns": "number" },
+    "clampSeats": { "arguments": ["n:number"], "returns": "number" },
+    "seatAngle": { "arguments": ["k:number", "n:number"], "returns": "number" },
+    "ringPoint": { "arguments": ["angle:number"], "returns": "{x:number,y:number}" },
+    "clockwiseTarget": { "arguments": ["from:number|null", "to:number"], "returns": "number" },
+    "tableCardWidth": { "arguments": ["seats:number", "faceUp:boolean"], "returns": "number" },
+    "tableBoxSize": { "arguments": ["width:number", "height:number", "options?:{padding?:number,reserved?:number}"], "returns": "{width:number,height:number}" },
+    "Ring": { "arguments": ["rx:number", "ry:number"], "returns": "{angle(fraction):number,point(t):Point,fractionToward(p,c):number,outward(t):number}" },
+    "tableView": { "arguments": ["options:{layout:TableLayout,seat:(index:number)=>Node,centre?:Node}"], "returns": "HTMLElement" },
+    "tableFor": { "arguments": ["options:{seats:number,width:number,height:number,tv?:boolean,turn?:number,seat:(index:number)=>Node,centre?:Node}"], "returns": "{orientation:string,element:HTMLElement}" },
+    "tvScreen": { "arguments": ["options:{title:string,banner?:Node|null,exit?:Node|null,table:Node}"], "returns": "HTMLElement" },
+    "seatStyle": { "arguments": ["spot:{x:number,y:number,angle:number}"], "returns": "map<string,string>" },
+    "boxAspect": { "arguments": ["layout:TableLayout"], "returns": "string" }
+  },
+  "seatSpot": { "index": "0 is the viewer's seat at the bottom, then clockwise", "x,y": "centre of the seat's plate, fraction of the area", "angle": "radians the plate is turned so its foot faces out", "cards,shown,bet": "where hidden cards, open cards and the stake sit, fractions of the area" },
+  "styles": { "web": "implementation/web/table-layout.css", "themeVariables": ["--table", "--table-edge"] },
+  "native": {
+    "apple": ["TableGeometry.tableLayout", "TableGeometry.screenClass", "TableGeometry.relativeSeat", "Ring", "OvalTable", "TelevisionTable"],
+    "android": ["TableGeometry.tableLayout", "TableGeometry.screenClass", "TableGeometry.relativeSeat", "Ring", "OvalTable"]
+  }
+}

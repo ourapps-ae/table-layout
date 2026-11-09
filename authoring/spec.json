@@ -1,0 +1,124 @@
+{
+  "name": "table-layout",
+  "version": "0.3.0",
+  "title": "Table layout",
+  "description": "Seats around an oval table on every screen size, plus a television layout, as a pure function of the seat count and the area.",
+  "facilities": [
+    {
+      "id": "table-layout",
+      "description": "Seat, card, stake and middle-row positions for 2 to 9 seats on portrait, landscape and television screens"
+    }
+  ],
+  "provides": [
+    {
+      "id": "table-layout",
+      "type": "ae/table-layout",
+      "version": "1.0.0",
+      "path": "interfaces/table-layout.json"
+    }
+  ],
+  "requires": [
+    {
+      "id": "theme",
+      "type": "ae/theme",
+      "version": "1.0.0",
+      "path": "interfaces/required/theme.json"
+    },
+    {
+      "id": "controls",
+      "type": "ae/controls",
+      "version": "1.0.0",
+      "path": "interfaces/required/controls.json"
+    }
+  ],
+  "collect": [],
+  "dependencies": [],
+  "suites": [
+    {
+      "id": "web",
+      "argv": [
+        "node",
+        "--test",
+        "tests/web.test.ts"
+      ],
+      "scope": "required-local",
+      "tools": {
+        "node": "26.5.0"
+      }
+    },
+    {
+      "id": "apple",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "apple"
+      ],
+      "scope": "platform",
+      "fixtures": [
+        "tests/apple/main.swift"
+      ],
+      "tools": {
+        "python3": "3.12.8",
+        "swiftc": "6.4.2"
+      }
+    },
+    {
+      "id": "android",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "android"
+      ],
+      "scope": "platform",
+      "fixtures": [
+        "tests/android/Main.kt"
+      ],
+      "tools": {
+        "python3": "3.12.8",
+        "kotlinc": "2.2.0",
+        "java": "26.0.1"
+      }
+    }
+  ],
+  "tools": {
+    "node": "26.5.0",
+    "python3": "3.12.8",
+    "swiftc": "6.4.2",
+    "kotlinc": "2.2.0",
+    "java": "26.0.1"
+  },
+  "platforms": [
+    "web",
+    "apple",
+    "android"
+  ],
+  "text": {
+    "purpose": "`table-layout` puts people around a table. Given a seat count (2 to 9) and an area it returns where each seat, its hidden cards, its open cards and its stake go, where the deck, burn pile, five board cards and pot go, and how big the cards are, for three screen classes: a phone-shaped portrait table box (positions placed so nothing overlaps at any count), a wide landscape table whose seats sit at equal distances round an oval and are turned to face out, and a television layout with fixed upright seats. Seat 0 is always the viewer's, at the bottom, and the others follow clockwise. The geometry is pure and has no game words; seats and the middle show whatever the application passes in.",
+    "userInputs": "No installer settings. The application passes the seat count, the screen size, whether it is a television, and optionally a turn (a fraction of a lap) to spin a landscape table.",
+    "integration": "Web: call `tableLayout` (or `tableFor`, which also chooses the class from the screen size) and `tableView` from `web/table-view.ts`, passing a function that returns the node for each seat and a centre node; link `web/table-layout.css` after the theme's CSS (it reads `--table` and `--table-edge`). `tvScreen` wraps a table with a title, the controls component's `banner` and an exit control. Use `relativeSeat` to turn a server seat number into a position relative to the viewer. Apple: compile `PlacedSeats.swift` and `TableLayout.swift` anywhere, and `TableView.swift` (`OvalTable`, `TelevisionTable`) in UIKit targets with the theme's Swift files. Android: add `PlacedSeats.kt`, `TableLayout.kt` and `OvalTable.kt` to a Compose module with the theme's Kotlin files. Betting controls, cards, chips and poker text are not here: seats and the centre are the caller's, usually built from `card-graphics`, `chip-graphics` and `controls`.",
+    "infrastructure": "None. Pure geometry and local drawing; no accounts, network or deployment.",
+    "verification": "Node tests check, for every seat count from 2 to 9 on portrait, landscape and television areas, that there is one seat per player, all seat, card and stake points lie inside the area, seat 0 is at the bottom and the others go clockwise, left and right are mirror images, no two seats share a spot, landscape and television plates never overlap (turned bounding boxes), portrait positions equal the recipe's placed data, landscape seats are evenly spaced along the oval's arc length, the middle row runs in order, and screen class, clamping, relative seats, box sizing and clockwise light targets. The page builders are tested against a stand-in page. The Apple check compiles and runs `tests/apple/main.swift` for macOS, comparing all 25 fixture layouts (137 seat spots) with the TypeScript output to 1e-9, then type-checks all Swift with the theme's against the iOS simulator SDK. The Android check compiles the pure Kotlin and compares the same layouts in `tests/android/Expected.kt`; kotlinc was not available where this was written, so it has not been run, and `OvalTable.kt` (Compose) is only compiled by the application's Gradle build. Nothing is checked pixel by pixel.",
+    "scenarios": "A six-seat game on a phone shows the portrait table with six seats around the oval; rotate the phone and the landscape table appears with seats turned to face outward; a television shows the same game upright with fixed spots and a banner; a two-seat game and a nine-seat game use the same code path. A viewer can spin a landscape table by passing `turn`.",
+    "updates": "Patch updates replace files only. The component keeps no data; removal deletes its files and the application's imports of them."
+  },
+  "agentInstructions": "Select `ourapps-ae/table-layout`; connect `theme` to the theme component and `controls` to the controls component. It applies to any recipe with a table of 2 to 9 seats; for fewer or more seats say so, as the portrait positions are placed data for 2 to 9 only.",
+  "developerInstructions": "Supply the seat and centre content. Add a screen class by adding a case to `tableLayout` and a fixed-spot table in the same shape; keep web, Swift and Kotlin the same (the fixtures check it). Regenerate fixtures with `node tests/make-fixtures.ts` after any change to the layout.",
+  "suitability": {
+    "format": 1,
+    "jobs": [
+      "table-layout"
+    ],
+    "profiles": [
+      {
+        "id": "any",
+        "load": {},
+        "cost": "none",
+        "regions": [
+          "any"
+        ],
+        "compliance": []
+      }
+    ],
+    "notes": "Pure library; no provider limits apply."
+  }
+}

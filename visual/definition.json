@@ -1,0 +1,39 @@
+{
+  "id": "ourapps-ae.table-layout",
+  "name": "Table layout",
+  "kind": "component",
+  "status": "example",
+  "package": "ourapps-ae/table-layout",
+  "version": "0.3.0",
+  "ports": [
+    {
+      "id": "theme",
+      "name": "Theme",
+      "direction": "input",
+      "kind": "interface",
+      "type": "ae/theme",
+      "version": "1.0.0",
+      "required": true,
+      "cardinality": "one"
+    },
+    {
+      "id": "controls",
+      "name": "Controls",
+      "direction": "input",
+      "kind": "interface",
+      "type": "ae/controls",
+      "version": "1.0.0",
+      "required": true,
+      "cardinality": "one"
+    },
+    {
+      "id": "table-layout",
+      "name": "Table layout",
+      "direction": "output",
+      "kind": "interface",
+      "type": "ae/table-layout",
+      "version": "1.0.0"
+    }
+  ],
+  "settings": []
+}

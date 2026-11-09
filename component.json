@@ -1,0 +1,368 @@
+{
+  "format": 1,
+  "kind": "component",
+  "identity": {
+    "name": "ourapps-ae/table-layout",
+    "version": "0.3.0",
+    "sourceRevision": "19905b75dbea89fbfd424d67fe26c81aaed0e018",
+    "sourceTreeDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "licenceStatus": "deferred"
+  },
+  "facilities": [
+    {
+      "id": "table-layout",
+      "description": "Seat, card, stake and middle-row positions for 2 to 9 seats on portrait, landscape and television screens"
+    }
+  ],
+  "documents": {
+    "contract": "CONTRACT.md",
+    "interfaces": [
+      "interfaces/required/controls.json",
+      "interfaces/required/theme.json",
+      "interfaces/table-layout.json",
+      "suitability.json"
+    ],
+    "examples": [
+      "examples/consumer.ts"
+    ],
+    "licenceNotice": "LICENCE"
+  },
+  "collect": [],
+  "files": [
+    {
+      "path": "CONTRACT.md",
+      "executable": false
+    },
+    {
+      "path": "INSTRUCTIONS.md",
+      "executable": false
+    },
+    {
+      "path": "LICENCE",
+      "executable": false
+    },
+    {
+      "path": "SOURCE.md",
+      "executable": false
+    },
+    {
+      "path": "examples/consumer.ts",
+      "executable": false
+    },
+    {
+      "path": "implementation/android/src/main/java/ae/tablelayout/OvalTable.kt",
+      "executable": false
+    },
+    {
+      "path": "implementation/android/src/main/java/ae/tablelayout/PlacedSeats.kt",
+      "executable": false
+    },
+    {
+      "path": "implementation/android/src/main/java/ae/tablelayout/TableLayout.kt",
+      "executable": false
+    },
+    {
+      "path": "implementation/apple/Sources/PlacedSeats.swift",
+      "executable": false
+    },
+    {
+      "path": "implementation/apple/Sources/TableLayout.swift",
+      "executable": false
+    },
+    {
+      "path": "implementation/apple/Sources/TableView.swift",
+      "executable": false
+    },
+    {
+      "path": "implementation/web/layout.ts",
+      "executable": false
+    },
+    {
+      "path": "implementation/web/placed-seats.ts",
+      "executable": false
+    },
+    {
+      "path": "implementation/web/table-layout.css",
+      "executable": false
+    },
+    {
+      "path": "implementation/web/table-view.ts",
+      "executable": false
+    },
+    {
+      "path": "interfaces/required/controls.json",
+      "executable": false
+    },
+    {
+      "path": "interfaces/required/theme.json",
+      "executable": false
+    },
+    {
+      "path": "interfaces/table-layout.json",
+      "executable": false
+    },
+    {
+      "path": "suitability.json",
+      "executable": false
+    },
+    {
+      "path": "tests/android/Expected.kt",
+      "executable": false
+    },
+    {
+      "path": "tests/android/Main.kt",
+      "executable": false
+    },
+    {
+      "path": "tests/apple/main.swift",
+      "executable": false
+    },
+    {
+      "path": "tests/fake-dom.ts",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/layouts.json",
+      "executable": false
+    },
+    {
+      "path": "tests/make-fixtures.ts",
+      "executable": false
+    },
+    {
+      "path": "tests/native.py",
+      "executable": false
+    },
+    {
+      "path": "tests/web.test.ts",
+      "executable": false
+    },
+    {
+      "path": "tools.lock.json",
+      "executable": false
+    },
+    {
+      "path": "visual/definition.json",
+      "executable": false
+    },
+    {
+      "path": "visual/examples/connected.json",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.png",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.svg",
+      "executable": false
+    },
+    {
+      "path": "visual/output/description.md",
+      "executable": false
+    }
+  ],
+  "artefacts": [
+    {
+      "source": "implementation/android/src/main/java/ae/tablelayout/OvalTable.kt",
+      "destination": "components/table-layout/android/src/main/java/ae/tablelayout/OvalTable.kt",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/android/src/main/java/ae/tablelayout/PlacedSeats.kt",
+      "destination": "components/table-layout/android/src/main/java/ae/tablelayout/PlacedSeats.kt",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/android/src/main/java/ae/tablelayout/TableLayout.kt",
+      "destination": "components/table-layout/android/src/main/java/ae/tablelayout/TableLayout.kt",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/apple/Sources/PlacedSeats.swift",
+      "destination": "components/table-layout/apple/Sources/PlacedSeats.swift",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/apple/Sources/TableLayout.swift",
+      "destination": "components/table-layout/apple/Sources/TableLayout.swift",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/apple/Sources/TableView.swift",
+      "destination": "components/table-layout/apple/Sources/TableView.swift",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/web/layout.ts",
+      "destination": "components/table-layout/web/layout.ts",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/web/placed-seats.ts",
+      "destination": "components/table-layout/web/placed-seats.ts",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/web/table-layout.css",
+      "destination": "components/table-layout/web/table-layout.css",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/web/table-view.ts",
+      "destination": "components/table-layout/web/table-view.ts",
+      "template": false,
+      "executable": false
+    }
+  ],
+  "dependencies": [],
+  "provides": [
+    {
+      "id": "table-layout",
+      "type": "ae/table-layout",
+      "version": "1.0.0",
+      "path": "interfaces/table-layout.json"
+    }
+  ],
+  "requires": [
+    {
+      "id": "theme",
+      "type": "ae/theme",
+      "version": "1.0.0",
+      "path": "interfaces/required/theme.json"
+    },
+    {
+      "id": "controls",
+      "type": "ae/controls",
+      "version": "1.0.0",
+      "path": "interfaces/required/controls.json"
+    }
+  ],
+  "visual": {
+    "definition": "visual/definition.json",
+    "examples": [
+      "visual/examples/connected.json"
+    ],
+    "outputs": [
+      "visual/output/connected.svg",
+      "visual/output/connected.png"
+    ],
+    "descriptions": [
+      "visual/output/description.md"
+    ]
+  },
+  "capabilities": {
+    "hosts": [],
+    "secrets": [],
+    "writes": [
+      "components/table-layout/android/src/main/java/ae/tablelayout/OvalTable.kt",
+      "components/table-layout/android/src/main/java/ae/tablelayout/PlacedSeats.kt",
+      "components/table-layout/android/src/main/java/ae/tablelayout/TableLayout.kt",
+      "components/table-layout/apple/Sources/PlacedSeats.swift",
+      "components/table-layout/apple/Sources/TableLayout.swift",
+      "components/table-layout/apple/Sources/TableView.swift",
+      "components/table-layout/web/layout.ts",
+      "components/table-layout/web/placed-seats.ts",
+      "components/table-layout/web/table-layout.css",
+      "components/table-layout/web/table-view.ts"
+    ]
+  },
+  "infrastructure": {
+    "accounts": [],
+    "costStatus": "unmeasured",
+    "deployedReason": "No deployed service; injected resources and local library functions only."
+  },
+  "verification": [
+    {
+      "id": "web",
+      "root": "package",
+      "argv": [
+        "node",
+        "--test",
+        "tests/web.test.ts"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "node": "26.5.0"
+      },
+      "fixtures": [
+        "tests/fixtures/layouts.json"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "required-local",
+      "requirements": []
+    },
+    {
+      "id": "apple",
+      "root": "package",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "apple"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "python3": "3.12.8",
+        "swiftc": "6.4.2"
+      },
+      "fixtures": [
+        "tests/apple/main.swift"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "platform",
+      "requirements": []
+    },
+    {
+      "id": "android",
+      "root": "package",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "android"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "python3": "3.12.8",
+        "kotlinc": "2.2.0",
+        "java": "26.0.1"
+      },
+      "fixtures": [
+        "tests/android/Main.kt"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "platform",
+      "requirements": []
+    }
+  ],
+  "upgrade": {
+    "policy": "patch",
+    "migration": "files-only"
+  }
+}

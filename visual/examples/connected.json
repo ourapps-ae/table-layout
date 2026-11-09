@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "table-layout-connected",
+  "title": "Table layout: connected consumer",
+  "status": "example",
+  "view": "component",
+  "focus": "component",
+  "definitions": [
+    {
+      "id": "ourapps-ae.table-layout",
+      "name": "Table layout",
+      "kind": "component",
+      "status": "example",
+      "package": "ourapps-ae/table-layout",
+      "version": "0.3.0",
+      "ports": [
+        {
+          "id": "theme",
+          "name": "Theme",
+          "direction": "input",
+          "kind": "interface",
+          "type": "ae/theme",
+          "version": "1.0.0",
+          "required": true,
+          "cardinality": "one"
+        },
+        {
+          "id": "controls",
+          "name": "Controls",
+          "direction": "input",
+          "kind": "interface",
+          "type": "ae/controls",
+          "version": "1.0.0",
+          "required": true,
+          "cardinality": "one"
+        },
+        {
+          "id": "table-layout",
+          "name": "Table layout",
+          "direction": "output",
+          "kind": "interface",
+          "type": "ae/table-layout",
+          "version": "1.0.0"
+        }
+      ],
+      "settings": []
+    },
+    {
+      "id": "consumer",
+      "name": "Example application consumer",
+      "kind": "application",
+      "status": "example",
+      "revision": "0.1.0",
+      "ports": [
+        {
+          "id": "table-layout",
+          "name": "Table layout",
+          "direction": "input",
+          "kind": "interface",
+          "type": "ae/table-layout",
+          "version": "1.0.0",
+          "required": true,
+          "cardinality": "one"
+        },
+        {
+          "id": "theme",
+          "name": "Theme",
+          "direction": "output",
+          "kind": "interface",
+          "type": "ae/theme",
+          "version": "1.0.0"
+        },
+        {
+          "id": "controls",
+          "name": "Controls",
+          "direction": "output",
+          "kind": "interface",
+          "type": "ae/controls",
+          "version": "1.0.0"
+        }
+      ],
+      "settings": []
+    }
+  ],
+  "instances": [
+    {
+      "id": "component",
+      "name": "Table layout",
+      "definition": "ourapps-ae.table-layout",
+      "configuration": {}
+    },
+    {
+      "id": "consumer",
+      "name": "Example consumer",
+      "definition": "consumer",
+      "configuration": {}
+    }
+  ],
+  "connections": [
+    {
+      "source": {
+        "instance": "component",
+        "port": "table-layout"
+      },
+      "target": {
+        "instance": "consumer",
+        "port": "table-layout"
+      }
+    },
+    {
+      "source": {
+        "instance": "consumer",
+        "port": "theme"
+      },
+      "target": {
+        "instance": "component",
+        "port": "theme"
+      }
+    },
+    {
+      "source": {
+        "instance": "consumer",
+        "port": "controls"
+      },
+      "target": {
+        "instance": "component",
+        "port": "controls"
+      }
+    }
+  ]
+}
