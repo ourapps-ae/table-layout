@@ -221,3 +221,23 @@ test("a consumer lays names out for any screen without a game", () => {
   const tv = nameTable(["A", "B", "C", "D"], { width: 1920, height: 1080, tv: true });
   assert.equal(tv.orientation, "tv");
 });
+
+test("the OpenRPC interface describes the layout shape and the exported functions", async () => {
+  const doc = JSON.parse(readFileSync(new URL("../interfaces/table-layout.json", import.meta.url), "utf8"));
+  assert.equal(doc.openrpc, "1.3.2");
+  assert.deepEqual([doc.info.title, doc.info.version], ["ae/table-layout", "1.0.0"]);
+  const { TableLayout: shape, SeatSpot, Limits, Orientation } = doc.components.schemas;
+  for (const o of Orientation.enum as Orientation[]) {
+    const l = layoutOf(5, o);
+    assert.deepEqual(Object.keys(l).sort(), [...shape.required].sort(), o);
+    assert.deepEqual(Object.keys(l.seatSpots[0]).sort(), [...SeatSpot.required].sort(), o);
+    assert.equal(l.board.length, shape.properties.board.minItems);
+  }
+  assert.deepEqual(Limits.const, { minSeats: MIN_SEATS, maxSeats: MAX_SEATS, portraitAspect: 1.3 });
+  const web: Record<string, unknown> = { ...(await import("../implementation/web/layout.ts")), ...(await import("../implementation/web/table-view.ts")) };
+  for (const method of doc.methods) {
+    const [owner, member] = method.name.split(".");
+    assert.equal(typeof web[owner], "function", method.name);
+    if (member) assert.equal(typeof (Ring.prototype as unknown as Record<string, unknown>)[member], "function", method.name);
+  }
+});
