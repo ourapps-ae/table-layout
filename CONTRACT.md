@@ -23,7 +23,7 @@ No installer settings. The application passes the seat count, the screen size, w
 - `implementation/web/table-view.ts` -> `components/table-layout/web/table-view.ts`
 
 Dependencies: none.
-`tools.lock.json` pins verification tools: node 26.5.0, python3 3.12.8, swiftc 6.4.2, kotlinc 2.2.0, java 26.0.1. Licence wording remains deferred.
+`tools.lock.json` pins verification tools: node 26.5, python3 3.12, swiftc 6.4, kotlinc 2.2, java 26.0. Licence wording remains deferred.
 
 ## Provided interfaces
 - `interfaces/table-layout.json` defines `table-layout` (ae/table-layout) version 1.0.0 as an OpenRPC 1.3.2 document: one method per web function (`Ring` and its methods as `Ring.angle` and so on), each description naming the Swift and Kotlin form or saying it is web only, with `TableLayout`, `SeatSpot`, `Point`, `PlacedSeats` and the seat limits as JSON Schema 2020-12 under `components.schemas`. Seat callbacks and DOM nodes are described as host values, not serialised.
@@ -44,9 +44,9 @@ None. Pure geometry and local drawing; no accounts, network or deployment.
 ## Verification
 Node tests check, for every seat count from 2 to 9 on portrait, landscape and television areas, that there is one seat per player, all seat, card and stake points lie inside the area, seat 0 is at the bottom and the others go clockwise, left and right are mirror images, no two seats share a spot, landscape and television plates never overlap (turned bounding boxes), portrait positions equal the recipe's placed data, landscape seats are evenly spaced along the oval's arc length, the middle row runs in order, and screen class, clamping, relative seats, box sizing and clockwise light targets, and that the OpenRPC interface's layout shape and seat limits match the code and every method it lists is an exported web function. The page builders are tested against a stand-in page. The Apple check compiles and runs `tests/apple/main.swift` for macOS, comparing all 25 fixture layouts (137 seat spots) with the TypeScript output to 1e-9, then type-checks all Swift with the theme's against the iOS simulator SDK. The Android check compiles the pure Kotlin and compares the same layouts in `tests/android/Expected.kt`; kotlinc was not available where this was written, so it has not been run, and `OvalTable.kt` (Compose) is only compiled by the application's Gradle build. Nothing is checked pixel by pixel.
 
-- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5.0)
-- `python3 tests/native.py apple` (apple, platform; tools: python3 3.12.8, swiftc 6.4.2)
-- `python3 tests/native.py android` (android, platform; tools: python3 3.12.8, kotlinc 2.2.0, java 26.0.1)
+- `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
+- `python3 tests/native.py apple` (apple, platform; tools: python3 3.12, swiftc 6.4)
+- `python3 tests/native.py android` (android, platform; tools: python3 3.12, kotlinc 2.2, java 26.0)
 
 ## Scenarios and presentation
 A six-seat game on a phone shows the portrait table with six seats around the oval; rotate the phone and the landscape table appears with seats turned to face outward; a television shows the same game upright with fixed spots and a banner; a two-seat game and a nine-seat game use the same code path. A viewer can spin a landscape table by passing `turn`.
