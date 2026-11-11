@@ -1,6 +1,6 @@
 {
   "name": "table-layout",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "title": "Table layout",
   "description": "Seats around an oval table on every screen size, plus a television layout, as a pure function of the seat count and the area.",
   "facilities": [
