@@ -37,6 +37,12 @@
       "template": false
     },
     {
+      "destination": "components/table-layout/web/index.ts",
+      "executable": false,
+      "source": "implementation/web/index.ts",
+      "template": false
+    },
+    {
       "destination": "components/table-layout/web/layout.ts",
       "executable": false,
       "source": "implementation/web/layout.ts",
@@ -71,6 +77,7 @@
       "components/table-layout/apple/Sources/PlacedSeats.swift",
       "components/table-layout/apple/Sources/TableLayout.swift",
       "components/table-layout/apple/Sources/TableView.swift",
+      "components/table-layout/web/index.ts",
       "components/table-layout/web/layout.ts",
       "components/table-layout/web/placed-seats.ts",
       "components/table-layout/web/table-layout.css",
@@ -146,6 +153,10 @@
     {
       "executable": false,
       "path": "implementation/apple/Sources/TableView.swift"
+    },
+    {
+      "executable": false,
+      "path": "implementation/web/index.ts"
     },
     {
       "executable": false,
